@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-paper: #FAF6EE;
+    --bg-card: #FFFFFF;
+    --text-ink: #181E24;
+    --text-muted: #576574;
+    --signal-hot: #D83A1E;
+    --signal-accent: #1D4ED8;
+    --border-rule: rgba(24, 30, 36, 0.12);
+    --grid-line: rgba(24, 30, 36, 0.04);
+    --tape-color: rgba(245, 230, 195, 0.85);
+  }
+
+  [data-theme="playground"] {
+    --bg-paper: #F8FAF9;
+    --bg-card: #FFFFFF;
+    --text-ink: #0F172A;
+    --text-muted: #475569;
+    --signal-hot: #EA580C;
+    --signal-accent: #0284C7;
+    --border-rule: rgba(15, 23, 42, 0.14);
+    --grid-line: rgba(15, 23, 42, 0.05);
+    --tape-color: rgba(224, 242, 254, 0.8);
+  }
+
+  [data-theme="signal"] {
+    --bg-paper: #0B0E14;
+    --bg-card: #151922;
+    --text-ink: #F1F5F9;
+    --text-muted: #94A3B8;
+    --signal-hot: #10B981;
+    --signal-accent: #38BDF8;
+    --border-rule: rgba(241, 245, 249, 0.12);
+    --grid-line: rgba(241, 245, 249, 0.04);
+    --tape-color: rgba(30, 41, 59, 0.8);
+  }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&display=swap');
+
+body {
+  background-color: var(--bg-paper);
+  color: var(--text-ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-display {
+  font-family: 'Bricolage Grotesque', system-ui, -apple-system, sans-serif;
+}
+
+.font-serif-lab {
+  font-family: 'Fraunces', Georgia, serif;
+}
+
+.font-mono-lab {
+  font-family: 'DM Mono', monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Paper Grid Backdrop */
+.lab-grid-bg {
+  background-size: 24px 24px;
+  background-image: 
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+}
+
+/* Washi tape visual accent */
+.tape-strip {
+  position: absolute;
+  height: 24px;
+  background: var(--tape-color);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  opacity: 0.9;
+  z-index: 10;
+  backdrop-filter: blur(1px);
+}
+
+/* Stamp effect */
+.lab-stamp {
+  border: 2px dashed var(--signal-hot);
+  color: var(--signal-hot);
+  font-family: 'DM Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transform: rotate(-3deg);
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 2px;
+}
+
+/* Custom Cursor on non-touch */
+@media (pointer: fine) {
+  .custom-cursor-target {
+    cursor: crosshair;
+  }
+}
